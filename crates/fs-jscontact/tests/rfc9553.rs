@@ -2,8 +2,8 @@
 //! standard sits in an `extra` map, and the card comes back as it went in. The fixture holds one
 //! value for every property of the table in `docs/en/data/people/jscontact/description.md`.
 
-use fs_people_core::Card;
-use fs_people_core::card::Extra;
+use fs_jscontact::Card;
+use fs_jscontact::card::Extra;
 use serde_json::{Value, json};
 
 const FULL: &str = include_str!("fixtures/full_card.json");
@@ -84,7 +84,7 @@ fn the_typed_members_hold_the_values() {
     let name = card.name.as_ref().unwrap();
     assert_eq!(
         name.sort_as,
-        Some(fs_people_core::card::SortAs::ByKind(
+        Some(fs_jscontact::card::SortAs::ByKind(
             [
                 ("surname".to_owned(), "Zolenko".to_owned()),
                 ("given".to_owned(), "Amara".to_owned())
@@ -148,7 +148,7 @@ fn the_typed_members_hold_the_values() {
 
 #[test]
 fn the_full_card_is_valid() {
-    fs_people_core::validate::validate(&parsed()).unwrap();
+    fs_jscontact::validate::validate(&parsed()).unwrap();
 }
 
 #[test]

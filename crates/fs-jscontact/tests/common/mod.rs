@@ -2,7 +2,7 @@
 
 #![allow(dead_code)] // each test file uses a different subset
 
-use fs_people_core::Card;
+use fs_jscontact::Card;
 
 /// The demo cards: a copy of the documentation tree's `temp/demo-data/contacts.json`, kept here so the tests need nothing outside the repository.
 pub const DEMO: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/contacts.json");

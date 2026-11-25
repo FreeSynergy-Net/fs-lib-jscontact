@@ -2,7 +2,7 @@
 //! that a plain reader of the same data would stumble over. (The store and vCard parts of the original
 //! file stay with the program that has a store; this is the part that needs only the card.)
 
-use fs_people_core::{Exporter, Importer, JsContactFormat};
+use fs_jscontact::{Exporter, Importer, JsContactFormat};
 use serde_json::{Value, json};
 
 const BIG: &str = "123456789012345678901234567890";
@@ -38,8 +38,8 @@ fn an_import_names_the_cards_with_a_number_it_cannot_keep_and_reads_the_rest() {
     );
     let items = JsContactFormat.import(&text).unwrap();
     assert_eq!(items.len(), 4);
-    assert!(matches!(items[0], Err(fs_people_core::Error::InexactNumber(_))));
+    assert!(matches!(items[0], Err(fs_jscontact::Error::InexactNumber(_))));
     assert!(items[1].is_ok());
-    assert!(matches!(items[2], Err(fs_people_core::Error::InexactNumber(_))));
-    assert!(matches!(items[3], Err(fs_people_core::Error::InexactNumber(_))));
+    assert!(matches!(items[2], Err(fs_jscontact::Error::InexactNumber(_))));
+    assert!(matches!(items[3], Err(fs_jscontact::Error::InexactNumber(_))));
 }

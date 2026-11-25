@@ -1,4 +1,4 @@
-//! `fs-people-core`: the JSContact `Card` (RFC 9553) of FreeSynergy, without storage.
+//! `fs-jscontact`: the JSContact `Card` (RFC 9553) of FreeSynergy, without storage.
 //!
 //! A typed model of the card, its validation and JSON import/export. Unknown and vendor
 //! properties are kept. The crate holds no data and knows no store: `uid` and time come in as
