@@ -8,19 +8,23 @@ use serde_json::Value;
 use super::model::Card;
 use super::parts::{EmailAddress, Name, Organization, Phone};
 use super::types::Map;
-use crate::clock::now_utc;
 
 impl Card {
-    /// A new valid card with a fresh `urn:uuid:` UUIDv7 `uid` and `name.full`.
-    pub fn new(kind: &str, full_name: impl Into<String>) -> Self {
-        let now = now_utc();
+    /// A new valid card with the given `uid` and `name.full`. `now` is an RFC 9553 `UTCDateTime`
+    /// (`2026-11-25T10:00:00Z`) for `created` and `updated`: the crate reads no clock and makes no id.
+    pub fn new(
+        kind: &str,
+        full_name: impl Into<String>,
+        uid: impl Into<String>,
+        now: &str,
+    ) -> Self {
         Card {
             type_: "Card".into(),
             version: "1.0".into(),
-            uid: format!("urn:uuid:{}", fs_objects::ObjectId::new()),
+            uid: uid.into(),
             kind: Some(kind.into()),
-            created: Some(now.clone()),
-            updated: Some(now),
+            created: Some(now.to_string()),
+            updated: Some(now.to_string()),
             name: Some(Name {
                 full: Some(full_name.into()),
                 ..Default::default()
@@ -30,18 +34,18 @@ impl Card {
     }
 
     /// A new person card (`kind: individual`).
-    pub fn individual(full_name: impl Into<String>) -> Self {
-        Self::new("individual", full_name)
+    pub fn individual(full_name: impl Into<String>, uid: impl Into<String>, now: &str) -> Self {
+        Self::new("individual", full_name, uid, now)
     }
 
     /// A new card of software (`kind: application`, RFC 9553 §2.1.4), for example an AI.
-    pub fn application(full_name: impl Into<String>) -> Self {
-        Self::new("application", full_name)
+    pub fn application(full_name: impl Into<String>, uid: impl Into<String>, now: &str) -> Self {
+        Self::new("application", full_name, uid, now)
     }
 
     /// A new group card (`kind: group`), usable as folder / mailing list (ADR 0037).
-    pub fn group(full_name: impl Into<String>) -> Self {
-        Self::new("group", full_name)
+    pub fn group(full_name: impl Into<String>, uid: impl Into<String>, now: &str) -> Self {
+        Self::new("group", full_name, uid, now)
     }
 
     /// `kind`, defaulting to `individual`.

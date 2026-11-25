@@ -7,14 +7,12 @@ mod about;
 mod build;
 mod display;
 mod legacy;
-mod marks;
 mod model;
 mod parts;
 mod relations;
 mod resources;
 mod sub_object;
 mod types;
-mod vendor;
 
 pub use about::{Anniversary, AnniversaryDate, Author, Note, PersonalInfo};
 pub use model::Card;

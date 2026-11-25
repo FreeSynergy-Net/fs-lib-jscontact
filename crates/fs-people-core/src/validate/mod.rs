@@ -14,5 +14,4 @@ pub use check::{issues, validate};
 pub use datetime::is_utc_datetime;
 pub use kind::{KINDS, is_valid_kind};
 pub(crate) use numbers::after_string;
-pub(crate) use numbers::inexact;
 pub use numbers::{check_card_numbers, check_exact_numbers, first_inexact, has_negative_zero};

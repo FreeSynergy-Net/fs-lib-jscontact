@@ -3,18 +3,27 @@
 //! Pattern: Strategy + Adapter — the repository depends on these traits only; every foreign
 //! format (vCard now, CardDAV / CSV later) is an adapter implementing them.
 
-use fs_objects::Blob;
-
 use crate::card::Card;
 use crate::error::Result;
+
+/// The untouched source of one imported card, kept byte for byte.
+///
+/// Pattern: none (plain value) — media type and bytes, nothing else.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Original {
+    /// Media type of the source, e.g. `text/vcard`.
+    pub media_type: String,
+    /// The raw bytes.
+    pub bytes: Vec<u8>,
+}
 
 /// A card read from a foreign format, with the untouched source text when there is one.
 #[derive(Clone, Debug)]
 pub struct ImportedCard {
     /// The converted, validated card.
     pub card: Card,
-    /// The source text of this card (ADR 0030), if the format has a text form worth keeping.
-    pub original: Option<Blob>,
+    /// The source text of this card, if the format has a text form worth keeping.
+    pub original: Option<Original>,
 }
 
 /// Reads cards from the text of one foreign format.
