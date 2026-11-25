@@ -21,7 +21,7 @@ Built with help from Claude (AI). Licensed under MIT OR Apache-2.0.
 
 - No vCard. It will come as a separate part, together with import and export in the program that needs it.
 - No storage, no search, no program. Those stay with the modules that use the card.
-- This is a first move out of the people program (see the CHANGELOG). Only the tests that need just the card live here: 18 files of the old test suite need a store and stay there.
+- This is a first move out of the people program (see the CHANGELOG). Only the tests that need just the card live here; the tests that need a store stay with the people program.
 
 ## Part of FreeSynergy
 
