@@ -18,7 +18,10 @@ fn unknown_properties_and_details_keep_what_comes_in() {
     let text = r#"{"@type":"Card","version":"1.0","uid":"u","name":{"full":"A"},"example.org:n":{"i":18446744073709551615,"f":1.5,"small":7}}"#;
     let cards = JsContactFormat.import(text).unwrap();
     let imported = cards.into_iter().next().unwrap().unwrap();
-    assert_eq!(imported.card.extra.get("example.org:n").unwrap()["f"], json!(1.5));
+    assert_eq!(
+        imported.card.extra.get("example.org:n").unwrap()["f"],
+        json!(1.5)
+    );
     let out = JsContactFormat.export(&imported.card).unwrap();
     let back: Value = serde_json::from_str(&out).unwrap();
     assert_eq!(
@@ -38,8 +41,17 @@ fn an_import_names_the_cards_with_a_number_it_cannot_keep_and_reads_the_rest() {
     );
     let items = JsContactFormat.import(&text).unwrap();
     assert_eq!(items.len(), 4);
-    assert!(matches!(items[0], Err(fs_jscontact::Error::InexactNumber(_))));
+    assert!(matches!(
+        items[0],
+        Err(fs_jscontact::Error::InexactNumber(_))
+    ));
     assert!(items[1].is_ok());
-    assert!(matches!(items[2], Err(fs_jscontact::Error::InexactNumber(_))));
-    assert!(matches!(items[3], Err(fs_jscontact::Error::InexactNumber(_))));
+    assert!(matches!(
+        items[2],
+        Err(fs_jscontact::Error::InexactNumber(_))
+    ));
+    assert!(matches!(
+        items[3],
+        Err(fs_jscontact::Error::InexactNumber(_))
+    ));
 }
