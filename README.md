@@ -1,4 +1,4 @@
-# FreeSynergy JSContact: one contact card for every program
+# fs-lib-jscontact: one contact card for every program
 
 **A building block that gives every FreeSynergy program the same idea of what a contact card is.**
 
@@ -19,7 +19,7 @@ Built with help from Claude (AI). Licensed under MIT OR Apache-2.0.
 
 ## What is not there yet
 
-- No vCard. It will come as a separate part, together with import and export in the program that needs it.
+- No vCard yet. It will come later into this library, through `calcard-next` (RFC 9555 maps vCard to JSContact).
 - No storage, no search, no program. Those stay with the modules that use the card.
 - This is a first move out of the people program (see the CHANGELOG). Only the tests that need just the card live here; the tests that need a store stay with the people program.
 
@@ -29,7 +29,7 @@ FreeSynergy is a family of programs that are free for everyone, forever, and tha
 
 ## For developers
 
-- Workspace crate: `fs-jscontact`. Dependencies: `serde`, `serde_json`, `thiserror`; no other FreeSynergy crate.
+- Workspace crate: `fs-lib-jscontact`. Dependencies: `serde`, `serde_json`, `thiserror`; no other FreeSynergy crate.
 - Build and test: `cargo build --workspace` and `cargo test --workspace`.
 - Design: [DESIGN.md](DESIGN.md).
 - Licence: MIT OR Apache-2.0.
@@ -57,6 +57,6 @@ Mit Hilfe von Claude (KI) gebaut. Lizenz: MIT OR Apache-2.0.
 
 ### Was noch fehlt
 
-- Kein vCard. Es kommt später als eigener Teil, zusammen mit Import und Export im Programm, das es braucht.
+- Noch kein vCard. Es kommt später in diese Bibliothek, über `calcard-next` (RFC 9555 bildet vCard auf JSContact ab).
 - Kein Speicher, keine Suche, kein Programm. Das bleibt bei den Modulen, die die Karte nutzen.
 - Dies ist der erste Umzug aus dem Personen-Programm (siehe CHANGELOG). Hier liegen nur die Tests, die allein die Karte brauchen.

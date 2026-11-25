@@ -1,7 +1,7 @@
 //! JSContact `Card` (RFC 9553): module map.
 //!
 //! Pattern: Facade — this module only declares the concept files and re-exports the model, so
-//! callers keep writing `fs_jscontact::card::Card`.
+//! callers keep writing `fs_lib_jscontact::card::Card`.
 
 mod about;
 mod build;

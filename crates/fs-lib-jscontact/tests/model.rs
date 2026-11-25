@@ -3,7 +3,7 @@
 mod common;
 
 use common::{DEMO, person};
-use fs_jscontact::{Card, validate};
+use fs_lib_jscontact::{Card, validate};
 use serde_json::{Value, json};
 
 #[test]

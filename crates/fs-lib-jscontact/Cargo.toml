@@ -1,5 +1,5 @@
 [package]
-name = "fs-jscontact"
+name = "fs-lib-jscontact"
 description = "JSContact card (RFC 9553): typed model, validation and JSON import/export, without storage"
 version.workspace = true
 edition.workspace = true

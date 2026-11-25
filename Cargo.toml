@@ -1,10 +1,10 @@
 [workspace]
 resolver = "2"
-members = ["crates/fs-jscontact"]
+members = ["crates/fs-lib-jscontact"]
 
 [workspace.package]
 version = "0.0.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 rust-version = "1.89"
-repository = "https://github.com/FreeSynergy/fs-jscontact"
+repository = "https://github.com/FreeSynergy-Net/fs-lib-jscontact"

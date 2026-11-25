@@ -1,7 +1,7 @@
 //! The rules for the sub-objects added with the rest of RFC 9553 (required members, `@type`, `pref`),
 //! on the card of the fixture with one member taken away or changed at a time.
 
-use fs_jscontact::Card;
+use fs_lib_jscontact::Card;
 use serde_json::{Value, json};
 
 const FULL: &str = include_str!("fixtures/full_card.json");
@@ -10,7 +10,7 @@ fn problems_of(mut edit: impl FnMut(&mut Value)) -> Vec<String> {
     let mut v: Value = serde_json::from_str(FULL).unwrap();
     edit(&mut v);
     let card: Card = serde_json::from_value(v).unwrap();
-    fs_jscontact::validate::issues(&card)
+    fs_lib_jscontact::validate::issues(&card)
         .into_iter()
         .map(|i| i.path)
         .collect()

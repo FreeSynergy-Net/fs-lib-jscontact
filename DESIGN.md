@@ -1,4 +1,4 @@
-# fs-jscontact – Design
+# fs-lib-jscontact – Design
 
 The JSContact card (RFC 9553) as a plain library: typed model, validation, JSON import/export. It holds no data, stores nothing and is not a program. The point of truth for people stays with the person module; this crate is the one shared description of the card (one module for the standard, no copies).
 
