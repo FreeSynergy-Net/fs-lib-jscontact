@@ -1,4 +1,4 @@
-# Copy to <repo>/.github/workflows/check.yml - runs fmt, clippy (pedantic), tests and the coding rules on every push.
+# Runs fmt, clippy (pedantic), tests and the coding rules on every push (fs-release caller, pinned).
 name: check
 on:
   push:
@@ -7,9 +7,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   check:
-    uses: FreeSynergy/fs-release/.github/workflows/check.yml@v0.0.18
-    # with:
-    #   working-directory: "."
-    #   apt-packages: "libssl-dev"
+    uses: FreeSynergy-Net/fs-release/.github/workflows/check.yml@6798dba142edccc4aaab574b346c833998198764
